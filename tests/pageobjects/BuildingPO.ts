@@ -94,7 +94,7 @@ export default class BuildingPO {
     await this.page.locator(`text="${buildingType[randBuildingType]}"`).click();
     await this.buildingSqFootage.fill(`${randNumber}`);
     await this.buildingUtility.click();
-    await this.page.locator(`text='${utility[0]}'`).click();
+    await this.page.locator(`text='${utility[0]}' >> nth=0`).click();
     await this.buildingRate.fill(`${randNumber}`);
     await this.buildingTags.click();
     await this.page.keyboard.type(`newtag`);
