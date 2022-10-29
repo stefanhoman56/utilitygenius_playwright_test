@@ -5,6 +5,7 @@ import BuildingPO from "./pageobjects/BuildingPO";
 test.describe(`Verify Login Functionality`, () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(`https://app.utilitygenius.com/`);
+    await page.locator(`role=link[name="Sign In"]`).click();
     // await page.goto(`https://buildings-staging.utilitygenius.com/`);
 
     const Login = new LoginPO(page);
