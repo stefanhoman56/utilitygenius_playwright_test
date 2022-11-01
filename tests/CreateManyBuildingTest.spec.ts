@@ -15,8 +15,8 @@ test.describe(`Verify Login Functionality`, () => {
     await Login.enterLoginCredentialsAndClickOnLoginButton();
 
     // Step 2: Verify home page URl
-    await expect(page.url()).toEqual(
-      "https://app.utilitygenius.com/"
+    await expect(page.url()).toMatch(
+      /https:\/\/app.utilitygenius.com[\/|\/#]/
       // "https://buildings-staging.utilitygenius.com/"
     );
     //await Login.verifyImageLogoIsDisplayed();
@@ -29,6 +29,12 @@ test.describe(`Verify Login Functionality`, () => {
     for (let i = 1; i <= 120; i++) {
       const Building = new BuildingPO(page);
       //Step 1 : Click create new building button
+      await page.waitForSelector('text="Don’t show me this again"', { timeout: 3000 })
+        .then(async () => {
+          await page.locator(`text="Don’t show me this again"`).click();
+        })
+        .catch (async (error) => {
+        })
       await Building.clickCreateNewBuildingBtn();
 
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -42,8 +48,6 @@ test.describe(`Verify Login Functionality`, () => {
 
       //Step 2-2: Go to list page
       await page.goto(`https://app.utilitygenius.com/`);
-
-      await new Promise(resolve => setTimeout(resolve, 2000));
     }
     
     for (const key in backup) {
