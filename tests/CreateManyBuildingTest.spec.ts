@@ -44,7 +44,7 @@ test.describe(`Verify Login Functionality`, () => {
       newBuilding.address1 = backup.address1 + i;
       newBuilding.address2 = backup.address2 + i;
       newBuilding.zipCode = (parseInt(backup.zipCode) + i).toString();
-      await Building.createNewBuilding();
+      await Building.createNewBuilding(i == 66);
 
       //Step 2-2: Go to list page
       await page.goto(`https://app.utilitygenius.com/`);

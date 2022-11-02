@@ -82,7 +82,7 @@ export default class BuildingPO {
   /*
   = Create New Building
   */
-  async createNewBuilding() {
+  async createNewBuilding(force) {
     await this.buildingName.fill(newBuilding.name);
     await this.buildingAddress.fill(newBuilding.address1);
     await this.buildingAddress2.fill(newBuilding.address2);
@@ -94,7 +94,11 @@ export default class BuildingPO {
     await this.page.locator(`text="${buildingType[randBuildingType]}"`).click();
     await this.buildingSqFootage.fill(`${randNumber}`);
     await this.buildingUtility.click();
-    await this.page.locator(`text='${utility[0]}' >> nth=0`).click();
+    if (force) {
+      await this.page.locator(`#react-select-4-listbox > div:first-child`).click();
+    } else {
+      await this.page.locator(`text='${utility[0]}' >> nth=0`).click();
+    }
     await this.buildingRate.fill(`${randNumber}`);
     await this.buildingTags.click();
     await this.page.keyboard.type(`newtag`);
