@@ -42,7 +42,7 @@ test.describe(`Verify Login Functionality`, () => {
 
     await page.goto('https://projects.utilitygenius.com/');
 
-    await page.click(`.Home_tiles__k2_nZ > div > div > a > h2:has-text(${Project.roomName}) >> xpath=..`);
+    await page.click(`.Home_tiles__k2_nZ > div > div > a > h2:has-text("${Project.roomName}") >> xpath=..`);
     
     // await page.goto('https://projects.utilitygenius.com/project/1c9d8195-aea0-4d7d-907d-948c37b20006')
     // const Project = new ProjectPO(page);

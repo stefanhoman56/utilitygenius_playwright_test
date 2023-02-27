@@ -70,8 +70,8 @@ export default class ProjectPO {
   }
 
   generateRandomString(): string {
-    const randomNumber = Math.floor(Math.random() * Math.pow(10, 8));
-    return randomNumber.toString().padStart(8, "0");
+    const randomNumber = Math.floor(Math.random() * Math.pow(10, 6));
+    return randomNumber.toString().padStart(6, "0");
   }
 
   /*
