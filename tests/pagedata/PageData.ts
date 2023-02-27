@@ -6,8 +6,10 @@ import {
 } from "../../helpers/util";
 
 export const LoginData = {
+  // email: "snape793@gmail.com",
   email: "testdata@yopmail.com",
   //email: "kgordeeva+1@encentivenergy.com",
+  // password: "oaU40T@P6RT5",
   password: "Android@123",
   //password: "Zaushka8",
   invalidPassword: "123451",

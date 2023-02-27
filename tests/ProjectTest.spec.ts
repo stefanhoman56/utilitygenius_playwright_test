@@ -1,7 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { LoginPO } from "../tests/pageobjects/LoginPO";
-import CreateProjectPO from "./pageobjects/CreateProjectPO";
-import EditProjectPO from "./pageobjects/EditProjectPO";
+import ProjectPO from "./pageobjects/ProjectPO";
 
 test.describe(`Verify Login Functionality`, () => {
   test.beforeEach(async ({ page }) => {
@@ -26,23 +25,29 @@ test.describe(`Verify Login Functionality`, () => {
   }) => {
     await page.click('.Home_appDashWrap__TCIdt > div:nth-child(2) .AppDashTile_createWrap__f0F0T > a');
 
-    const CreateProject = new CreateProjectPO(page);
-    await CreateProject.createNewProject();
+    const Project = new ProjectPO(page);
+    await Project.createNewProject();
 
     await page.waitForNavigation();
 
-    const EditProject = new EditProjectPO(page);
+    Project.setEditMode();
 
-    await EditProject.duplicateRoom();
+    await Project.duplicateRoom();
 
     await page.waitForTimeout(5000);
 
-    await EditProject.addRoom();
+    await Project.addRoom();
 
-    await EditProject.addLine();
+    await Project.addLine();
 
     await page.goto('https://projects.utilitygenius.com/');
 
-    await page.waitForTimeout(1000000);
+    await page.click(`.Home_tiles__k2_nZ > div > div > a > h2:has-text(${Project.roomName}) >> xpath=..`);
+    
+    // await page.goto('https://projects.utilitygenius.com/project/1c9d8195-aea0-4d7d-907d-948c37b20006')
+    // const Project = new ProjectPO(page);
+    // Project.roomName = 'Project57697239'
+
+    await Project.checkRoom()
   });
 });
