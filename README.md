@@ -1,29 +1,15 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+`brew install node@16`
 
-### What is this repository for? ###
+`brew link --force node@16`
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+`npm install -g npm@latest`
 
-### How do I get set up? ###
+`npm install -g yarn@latest`
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+`yarn install`
 
-### Contribution guidelines ###
+`npx playwright install`
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+`npx playwright test`

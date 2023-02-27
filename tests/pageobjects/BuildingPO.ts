@@ -40,7 +40,7 @@ export default class BuildingPO {
     this.page = page;
     this.createNewBuildingBtn = page.locator(
       // "div.Home_createBuildingTile__Gm4Tq >> nth=0"
-      "div.MyBuildingsDash_createBuildingTile__A_60S"
+      "button.MyBuildingsDash_createBuildingTile__A_60S"
     );
     this.buildingName = page.locator(`[placeholder="Building Name"]`);
     this.buildingAddress = page.locator(`[placeholder="Address"]`);

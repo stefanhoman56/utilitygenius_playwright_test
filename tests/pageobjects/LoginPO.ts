@@ -12,23 +12,28 @@ export class LoginPO {
 
   constructor(page: Page) {
     this.page = page;
-    this.signInButton = page.locator("#top-menu > li:nth-child(5) a");
+    this.signInButton = page.locator("text='Sign In' >> nth=0");
     this.emailTextBox = page.locator("input[name='email']");
     this.passwordTextBox = page.locator("input[name='password']");
     this.loginButton = page.locator("button[type='submit']");
     this.appLogo = page.locator("#logo");
-    this.upgradeAccountBtn = page.locator(
-      ".Navbar_topMenuTryButton__1kCAG >> nth=1"
-    );
+    this.upgradeAccountBtn = page.locator("text='Upgrade My Account' >> nth=0");
   }
   /**
    * Enter username, password, and click on the login button
    */
   async enterLoginCredentialsAndClickOnLoginButton() {
+    let countSignInBtn = await this.page
+      .locator("text='Sign In' >> nth=0")
+      .count();
+    if (countSignInBtn > 0) {
+      await this.signInButton.click();
+    }
+
     await this.emailTextBox.fill(LoginData.email);
     await this.passwordTextBox.fill(LoginData.password);
     await this.loginButton.click();
-    await this.page.waitForTimeout(10000);
+    await this.page.waitForSelector("text='Upgrade My Account'");
   }
   /**
    * Enter username, password, and click on the login button
@@ -65,7 +70,7 @@ export class LoginPO {
    * Verify image logo is displayed
    */
   async verifyImageLogoIsDisplayed() {
-    var locator = await this.page.locator("header > div >div:nth-child(1) img");
+    var locator = await this.page.locator("//header//a//div >> nth=0");
     await expect(locator).toBeVisible();
   }
   /**

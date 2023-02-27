@@ -6,10 +6,10 @@ import {
 } from "../../helpers/util";
 
 export const LoginData = {
-  //email: "testdata@yopmail.com",
-  email: "snape793@gmail.com",
-  //password: "Android@123",
-  password: "oaU40T@P6RT5",
+  email: "testdata@yopmail.com",
+  //email: "kgordeeva+1@encentivenergy.com",
+  password: "Android@123",
+  //password: "Zaushka8",
   invalidPassword: "123451",
   errorMessage: "Wrong email or password.",
 };
@@ -18,7 +18,7 @@ export const searchRebatesPageData = {
   utility: "Pacific Gas & Electric Co.",
 };
 export const allUtilityPageData = {
-  headerText: "Searching All Utilities",
+  headerText: "All Utilities",
 };
 export const pricingPageData = {
   headerText: "Pricing and Plans",
@@ -48,8 +48,8 @@ export const myWidgetPageData = {
 
 export const CreateFreeAccountData = {
   email: `sh${currentYearMonthDate}@yopmail.com`,
-  password: "Password123",
-  fullName: "Siam Hasan",
+  password: "12345678Aa",
+  fullName: "Test",
   createFreeAccount: "Create Free Account",
   googleSignUpButtonText: "Sign up with Google",
 };

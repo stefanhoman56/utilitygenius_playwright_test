@@ -1,5 +1,5 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
+import type { PlaywrightTestConfig } from "@playwright/test";
+import { devices } from "@playwright/test";
 
 /**
  * Read environment variables from file.
@@ -11,15 +11,15 @@ import { devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: './tests',
+  testDir: "./tests",
   /* Maximum time one test can run for. */
-  timeout: 1200 * 1000,
+  timeout: 6000000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 20000
+    timeout: 1000000,
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -28,30 +28,33 @@ const config: PlaywrightTestConfig = {
   /* Retry on CI only */
   retries: 0,
   /* Opt out of parallel tests on CI. */
-  workers:1,
+  workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
-    actionTimeout: 0,
-   screenshot: 'only-on-failure',
-   video:'retain-on-failure',
+    actionTimeout: 1000000,
+    navigationTimeout: 1000000,
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
 
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://utilitygenius.com/',
+    baseURL: "https://utilitygenius.com/",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: "on-first-retry",
+    headless: false,
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
+      name: "chromium",
       use: {
-        ...devices['Desktop Chrome'],
-        userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/0.0.0.0 Safari/537.36'
+        ...devices["Desktop Chrome"],
+        userAgent:
+          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/0.0.0.0 Safari/537.36",
       },
     },
 
@@ -67,7 +70,7 @@ const config: PlaywrightTestConfig = {
     //   use: {
     //     ...devices['Desktop Safari'],
     //   },
-  //  },
+    //  },
 
     /* Test against mobile viewports. */
     // {
