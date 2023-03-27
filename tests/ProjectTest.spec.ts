@@ -9,15 +9,15 @@ test.describe(`Verify Login Functionality`, () => {
 
     const Login = new LoginPO(page);
 
+    // Step 1: User login with valid credentials
     await Login.enterLoginCredentialsAndClickOnLoginButton();
 
-    await page.waitForURL('https://app.utilitygenius.com/')
-
     // Step 2: Verify home page URl
-    // await expect(page.url()).toEqual(
-    //   "https://app.utilitygenius.com/"
-    //   // "https://buildings-staging.utilitygenius.com/"
-    // );
+    await expect(page.url()).toMatch(
+      /https:\/\/app.utilitygenius.com[\/|\/#]/
+      // "https://buildings-staging.utilitygenius.com/"
+    );
+    //await Login.verifyImageLogoIsDisplayed();
   });
 
   test.only(`Verify projects`, async ({

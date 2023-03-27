@@ -36,7 +36,7 @@ export default class ProjectPO {
 
   constructor(page: Page) {
     this.page = page;
-    this.intervalTime = 10000;
+    this.intervalTime = 500;
 
     this.runMode = "create"
 
@@ -99,11 +99,12 @@ export default class ProjectPO {
     await this.page.waitForTimeout(this.intervalTime);
   
     await this.zipInput.fill("15206");
+    await this.page.keyboard.press('Enter');
 
     await this.page.waitForTimeout(this.intervalTime);
 
     await this.utilitySelect.click();
-    await this.page.keyboard.type('West');
+    await this.page.keyboard.type('Deq');
     await this.page.waitForTimeout(this.intervalTime);
     await this.page.keyboard.press('Enter');
 
@@ -195,8 +196,7 @@ export default class ProjectPO {
 
     await expect(this.page.locator('.ProjectHeader_header__IZh7h')).toHaveText(this.roomName);
     await expect(this.page.locator('.ProjectAddress_showAddress__lKxa9 > p:nth-child(2)')).toContainText('15206')
-    await expect(this.page.locator('.ProjectAddress_showAddress__lKxa9 > p:nth-child(4)')).toContainText('West')
-    // await expect(this.page.locator('.ProjectAddress_showAddress__lKxa9 > p:nth-child(4)')).toContainText('Duq')
+    await expect(this.page.locator('.ProjectAddress_showAddress__lKxa9 > p:nth-child(4)')).toContainText('Duq')
     await expect(this.page.locator('.ProjectManufacturer_manufacturer___zSBA > p')).toContainText('Carolina')
 
     await expect(this.page.locator('.Project_roomsWrap__LmD0f > .Room_wrap__jGPYI:nth-child(1) .Room_roomName__5ZBHH > h2')).toContainText('MyRoom')
